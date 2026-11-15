@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpaceX Health Tracker – Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HEADER WITH PIXEL LOGO ===== -->
+  <header class="box">
+    <canvas id="logo" width="40" height="40"></canvas>
+    <div>
+      <h1>SpaceX</h1>
+      <p>HEALTH TRACKER +</p>
+      <p class="note">Demo – daily health monitoring for astronauts</p>
+    </div>
+  </header>
+
+  <!-- ===== SCENARIOS (for the demo) ===== -->
+  <section class="box">
+    <h2>Demo scenarios</h2>
+    <button class="btn" data-sc="normal">Normal week</button>
+    <button class="btn" data-sc="badsleep">Bad sleep week</button>
+    <button class="btn" data-sc="critical">Critical alert</button>
+    <button class="btn alt" id="resetBtn">Reset XP</button>
+    <p class="note">All limits in this demo are EXAMPLES. Real limits must be set by medical experts.</p>
+  </section>
+
+  <!-- ===== TRAFFIC LIGHT ===== -->
+  <section class="box">
+    <h2>Crew status</h2>
+    <div class="status">
+      <div class="light">
+        <div class="lamp r" id="lr"></div><div class="lamp y" id="ly"></div><div class="lamp g" id="lg"></div>
+      </div>
+      <div>
+        <div class="big" id="statusTitle"></div>
+        <ul id="messages"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INDICATORS ===== -->
+  <section class="box">
+    <h2>Today's indicators</h2>
+    <div class="grid" id="cards"></div>
+  </section>
+
+  <div class="grid">
+    <!-- ===== SLEEP CHART ===== -->
+    <section class="box">
+      <h2>Weekly sleep graph</h2>
+      <canvas id="chart" width="320" height="160" style="width:100%;background:#000;border:3px solid var(--line)"></canvas>
+      <p class="note">White line = 7 hours (example goal).</p>
+    </section>
+
+    <!-- ===== DAILY LOG FORM ===== -->
+    <section class="box">
+      <h2>Daily log</h2>
+      <label>Sleep (hours)</label><input type="number" id="fSleep" step="0.1" min="0" max="14">
+      <label>Exercise (minutes)</label><input type="number" id="fEx" min="0" max="300">
+      <label>Resting heart rate (bpm)</label><input type="number" id="fHr" min="30" max="200">
+      <label>Meals eaten (0-5)</label><input type="number" id="fMeals" min="0" max="5">
+      <label><input type="checkbox" id="fVit"> Vitamins taken</label>
+      <label>Stress level: <span id="stressVal"></span>/10</label>
+      <input type="range" id="fStress" min="1" max="10">
+      <label>Well-being diary</label>
+      <textarea id="fDiary" placeholder="How do you feel today?"></textarea>
+      <button class="btn" id="saveBtn">Save day (+XP)</button>
+    </section>
+  </div>
+
+  <!-- ===== GAMIFICATION ===== -->
+  <section class="box">
+    <h2>Mission progress</h2>
+    <p>LEVEL <span id="lvl"></span> &nbsp; XP <span id="xp"></span></p>
+    <div class="xpbar"><div class="xpfill" id="xpfill"></div></div>
+    <h2 style="margin-top:16px">Daily challenges</h2>
+    <ul id="challenges"></ul>
+    <h2>Achievements</h2>
+    <div id="achs"></div>
+  </section>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
